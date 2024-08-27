@@ -67,12 +67,12 @@ function Login() {
                                 <button 
                                     onClick={() => handleLogin(email, password)}
                                     onKeyDown={(e) => {
-                                    if(e.key === 'Enter') {
-                                        handleLogin()
-                                    }
-                                    if (e.key === " ") {
-                                        e.preventDefault();
-                                    }
+                                        if(e.key === 'Enter') {
+                                            handleLogin()
+                                        }
+                                        if (e.key === " ") {
+                                            e.preventDefault();
+                                        }
                                     }}
                                 >
                                     Logar

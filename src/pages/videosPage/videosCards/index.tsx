@@ -1,8 +1,8 @@
-import { ChannelImage, Container, TextCard, TextContainer, Title, TitleContainer } from "./styles";
+import { Banner, ChannelImage, Container, TextCard, TextContainer, Title, TitleContainer } from "./styles";
 
 interface Props {
-  thumbnail: string
   title: string
+  thumbnail: string
   channelImage: string
   details: string
   publishedAt: string
@@ -12,6 +12,7 @@ function MyVideosCards(props: Props) {
 
   return (
     <Container>
+      <Banner alt="thumbnail" src={props.thumbnail}/>
       <TitleContainer>
         <ChannelImage>
           {props.channelImage}

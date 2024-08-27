@@ -1,4 +1,4 @@
-import {  BackButton, BCharAt, BUserName, ButtonContainer, ButtonContent, ButtonIcon, ButtonLogar, ButtonLogarContainer, ClearButton, CloseImg, DropDowButton, DropDowButtonContainer, DropDowContainer, DropDowContent, HeaderButtons, HeaderContainer, LogoContainer, LogOutButton, LogOutContainer, SearchButton,  SearchContainerResponsive,  SearchContainer, SearchInput, SearchInputContainer, UserButtonContainer, UserButtonContent, UserContainer, UserName, ButtonContainerResponsive, BuserName, UserDropButtonContent, DropDowButtonUser } from './styles'
+import {  BackButton, BCharAt, BUserName, ButtonContainer, ButtonContent, ButtonIcon, ButtonLogar, ButtonLogarContainer, ClearButton, CloseImg, DropDowButton, DropDowButtonContainer, DropDowContainer, DropDowContent, HeaderButtons, HeaderContainer, LogoContainer, LogOutButton, LogOutContainer, SearchButton,  SearchContainerResponsive,  SearchContainer, SearchInput, SearchInputContainer, UserButtonContainer, UserButtonContent, UserContainer, UserName, ButtonContainerResponsive, LogoImg, DropUserButtonContent, DropBCharAt, DropBUserName, ButtonIconResponsive, IconResponsiveContainer } from './styles'
 import MenuIcon from '../../assets/header-icons/menu-hamburger.png'
 import LogoIcon from '../../assets/header-icons/YouTube-Logo.png'
 import LupaIcon from '../../assets/header-icons/search.png'
@@ -70,29 +70,30 @@ function Header() {
                     </ButtonContent>
                 </ButtonContainer>
 
-                <img 
-                style={{cursor: 'pointer', width: '100px'}}
+                <LogoImg 
                 alt=""
                 src={LogoIcon}
+                onClick={() => navigate('/')}
                 />
 
             </LogoContainer>
 
             <SearchContainerResponsive onClick={Search}>
-
-                <ButtonContainerResponsive >
+                <IconResponsiveContainer >
+                    <ButtonIconResponsive alt="ícone lupa" src={LupaIcon} />
+                </IconResponsiveContainer>
+               
+                <ButtonContainerResponsive openDropDown={openDropDown}>
                     <ButtonContent>
                         <ButtonIcon alt="" src={VideoIcon}/>
                     </ButtonContent>
                 </ButtonContainerResponsive>
 
-                <ButtonContainerResponsive >
+                <ButtonContainerResponsive openDropDown={openDropDown} >
                     <ButtonContent>
                         <ButtonIcon alt="" src={NotificationIcon}/>
                     </ButtonContent>
                 </ButtonContainerResponsive>
-                
-                <ButtonIcon alt="ícone lupa" src={LupaIcon} />
 
             </SearchContainerResponsive>
      
@@ -173,7 +174,7 @@ function Header() {
 
                                     <UserButtonContent openDropDown={openDropDown} onClick={() => setOpenDropDown(!openDropDown)}>
                                         <BCharAt  openDropDown={openDropDown}>
-                                            {user.nome.charAt(0).toUpperCase()}
+                                            {user && user.nome ? user.nome.charAt(0).toUpperCase() : ''}
                                         </BCharAt> 
                                         <BUserName openDropDown={openDropDown}>
                                             {user.nome}
@@ -186,18 +187,16 @@ function Header() {
                             <DropDowContainer openDropDown={openDropDown}>
                                 <DropDowContent>
 
-                                    <DropDowButtonContainer onClick={() => setOpenDropDown(CloseOpenDropDown)}>
+                                    <DropUserButtonContent openDropDown={openDropDown} onClick={() => setOpenDropDown(!openDropDown)}>
+                                        <DropBCharAt  openDropDown={openDropDown}>
+                                            {user && user.nome ? user.nome.charAt(0).toUpperCase() : ''}
+                                        </DropBCharAt> 
+                                        <DropBUserName openDropDown={openDropDown}>
+                                            {user.nome}
+                                        </DropBUserName>                          
+                                    </DropUserButtonContent>
 
-                                        <DropDowButtonUser>               
-                                            <UserDropButtonContent openDropDown={openDropDown} onClick={() => setOpenDropDown(!openDropDown)}>
-                                                <BCharAt  openDropDown={openDropDown}>
-                                                    {user.nome.charAt(0).toUpperCase()}
-                                                </BCharAt> 
-                                                <BuserName openDropDown={openDropDown}>
-                                                    {user.nome}
-                                                </BuserName>                          
-                                            </UserDropButtonContent>
-                                        </DropDowButtonUser> 
+                                    <DropDowButtonContainer onClick={() => setOpenDropDown(CloseOpenDropDown)}>
 
                                         <DropDowButton onClick={() => navigate('/SeuCanal')}>               
                                             Meu canal                          
@@ -206,7 +205,6 @@ function Header() {
                                         <DropDowButton onClick={() => navigate('/myVideos')}>               
                                             Meus videos                          
                                         </DropDowButton> 
-
 
                                     </DropDowButtonContainer>
 

@@ -18,11 +18,12 @@ import Configuracoes from "./pages/menu-page/configurações";
 import HistoricoDenuncias from "./pages/menu-page/historico -denuncias";
 import Ajuda from "./pages/menu-page/ajuda";
 import Feedback from "./pages/menu-page/feedback";
-import MyVideos from "./pages/videosPage/seus-videos";
+import YourVideos from "./pages/videosPage/seus-videos";
 import SeusDownloads from "./pages/menu-page/seus-downloads";
 import SearchPage from "./pages/search";
 import Login from "./pages/users/login";
 import CreateUserPage from "./pages/users/createUser";
+import MyVideo from "./pages/videosPage/seus-videos";
 
 
 
@@ -53,7 +54,7 @@ function MinhasRotas(){
             <Route path='/Ajuda' element={<Ajuda />} />
             <Route path='/EviarFeedback' element={<Feedback />} />
             <Route path='/seusDownloads' element={<SeusDownloads />} />
-            <Route path='/myVideos' element={<MyVideos />} />
+            <Route path='/myVideos' element={<MyVideo />} />
             <Route path='/search' element={<SearchPage />} />
             <Route path='/login' element={<Login />} />
             <Route path='/user' element={<CreateUserPage />} />

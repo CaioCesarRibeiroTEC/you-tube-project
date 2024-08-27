@@ -19,7 +19,17 @@ export const LogoContainer = styled.div`
   display: flex;
   align-items: center;
   height: 30px;
-  width: 400px;
+  width: 450px;
+`;
+
+export const LogoImg = styled.img`
+  width: 100px;
+  cursor: pointer; 
+
+  @media(max-width: 800px) {
+    width: 85px;
+    margin-left: -10px;
+  }
 `;
 
 export const ButtonContainer = styled.div<{margin?: string}>`
@@ -56,7 +66,26 @@ export const SearchContainer = styled.div<{openSearch: boolean}>`
   width: 800px;
   display:flex;
 
-  @media(max-width: 500px) {
+  @media(max-width: 1170px) {
+    width: 450px;
+    background-color: #fff;
+    height: 50px;
+    margin-left: -200px;
+
+  }
+
+
+  @media(max-width: 975px) {
+    width: 300px;
+  }
+
+  @media(max-width: 750px) {
+
+   margin-left:1px;
+
+  }
+
+  @media(max-width: 600px) {
     position: fixed;
     top: ${({openSearch}) => openSearch? '10px' : '-100px'};
     left: 0;
@@ -73,7 +102,10 @@ export const SearchInputContainer = styled.div`
   border: 1px solid #d3d3d3;
   border-radius: 40px 0 0 40px;
   display: flex;
-  margin-left: 80px;
+
+  @media(max-width: 975px) {
+    width: 250px
+  }
   
   @media(max-width: 834px) {
     width: 200px;
@@ -101,17 +133,39 @@ export const SearchContainerResponsive = styled.div`
   cursor: pointer;
   margin-left: 70px;
 
-  @media(max-width: 500px) {
+  @media(max-width: 600px) {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 300px;
-    height: 40px
+    height: 40px;
+    margin-left: -50px;
   }
 
 `;
 
-export const ButtonContainerResponsive = styled.div`
+export const IconResponsiveContainer = styled.div`
+ width: 50px;
+ height: 50px;
+ background-color:#d2d2d2; 
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+
+ @media(max-width: 380px) {
+    margin-left: 60px;
+    width: 40px;
+    height: 40px;
+  }
+`;
+
+export const ButtonIconResponsive = styled.img`
+  width: 30px;
+  height: 30px;
+`;
+
+export const ButtonContainerResponsive = styled.div<{openDropDown: boolean}>`
   width: 40px;
   height: 40px;
   display: flex;
@@ -119,6 +173,10 @@ export const ButtonContainerResponsive = styled.div`
 
   :hover { background-color: #f2f2f2; border-radius: 50%; }
 
+  @media(max-width: 350px) {
+    display: ${({openDropDown}) => openDropDown? 'none' : 'flex'};
+    width: 30px;
+  }
 `;
 
 
@@ -143,7 +201,7 @@ export const SearchButton = styled.div`
   cursor: pointer;
 
   @media(max-width: 830px) {
-    width: 50px;;
+    width: 50px;
   }
 `;
 
@@ -189,14 +247,14 @@ export const HeaderButtons = styled.div`
   display: flex;
   justify-content: end;
 
-  @media(max-width: 834px) {
-    width: 40%;
+  @media(max-width: 1170px) {
+    width:100px;
   }
 
-  @media(max-width: 500px) {
+  @media(max-width: 600px) {
     display: none;
   }
-  
+
 `;
 
 export const UserContainer = styled.div`
@@ -209,12 +267,6 @@ export const UserContainer = styled.div`
   position: sticky;
   top:0;
   z-index: 1;
-
-  @media(max-width: 830px) {
-    width: 100%;
-  }
-
-
 `;
 
 export const UserName = styled.div<{openDropDown: boolean}>`
@@ -237,10 +289,19 @@ export const UserButtonContainer = styled.div<{openDropDown: boolean}>`
 
   :hover { background-color: ${({openDropDown}) => openDropDown? '#f2f2f2' : '#f2f2f2'}; border-radius: ${({openDropDown}) => openDropDown? '30px' : '50%'}; }
 
+  @media(max-width: 750px) {
+    width: 55px;
+    height: 55px
+  }
+
   @media(max-width: 500px) {
     width: 55px;
     :hover{background-color: #d3d3d3;}
     margin-right: 5px; 
+  }
+
+  @media(max-width: 350px) {
+    margin-left: ${({openDropDown}) => openDropDown? '30px ' : 'none'};
   }
 `;
 
@@ -251,7 +312,11 @@ export const UserButtonContent = styled.div<{openDropDown: boolean}>`
   align-items: center;
   justify-content: center;
   margin-left: ${({openDropDown}) => openDropDown? '5px' : 'none'};
+ 
 
+  @media(max-width: 750px) {
+    flex-direction: column;
+  }
 `;
 
 export const BCharAt = styled.b<{openDropDown: boolean}>`
@@ -266,6 +331,11 @@ export const BCharAt = styled.b<{openDropDown: boolean}>`
   border: ${({openDropDown}) => openDropDown? '1px solid red' : 'none'};
 
 
+  @media(max-width: 750px) {
+    width: 30px;
+    height: 30px;
+  }
+
 `;
 
 export const BUserName = styled.b<{openDropDown: boolean}>`
@@ -274,7 +344,7 @@ export const BUserName = styled.b<{openDropDown: boolean}>`
   transition: ${({openDropDown}) => openDropDown? '3s' : '1.5'};
   margin-left: 20px;
 
-  @media(max-width: 500px) {
+  @media(max-width: 750px) {
     display: none;
   }
 `;
@@ -300,29 +370,21 @@ export const DropDowContainer = styled.div<{openDropDown: boolean}>`
   position: absolute;
   
   @media(max-width: 1600px) {
-    margin-right: ${({openDropDown}) => openDropDown? '20px' : '-550px'};
+    margin-right: ${({openDropDown}) => openDropDown? '20px' : '-750px'};
   }
 
-  @media(max-width: 500px) {
-    margin-right: ${({openDropDown}) => openDropDown? '400px' : '-550px'};
+  @media(max-width: 750px) {
+    margin-right: ${({openDropDown}) => openDropDown? '250px' : '-550px'};
+    margin-top: 50px;
+    height: 300px;
+  }
+
+  @media(max-width: 350px) {
+    margin-right: ${({openDropDown}) => openDropDown? '150px' : '-550px'};
   }
 `;
 
 
-export const UserDropButtonContent = styled.div<{openDropDown: boolean}>`
-  display: none;
-
-  @media(max-width: 500px) {
-    width: ${({openDropDown}) => openDropDown? '95%' : '55px'};
-    height: ${({openDropDown}) => openDropDown? '100%' : '55px'};
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: ${({openDropDown}) => openDropDown? '5px' : 'none'};
-  }
-
-
-`;
 
 export const DropDowContent = styled.div`
   width: 95%;
@@ -331,9 +393,42 @@ export const DropDowContent = styled.div`
   align-items: center;
   row-gap: 20px;
   padding-top: 30px;
+`;
 
 
+export const DropUserButtonContent = styled.div<{openDropDown: boolean}>`
+
+  display: none;
+  @media(max-width: 750px) {
+
+  width: ${({openDropDown}) => openDropDown? '95%' : '55px'};
+  height: ${({openDropDown}) => openDropDown? '100%' : '55px'};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
  
+`;
+
+export const DropBCharAt = styled.b<{openDropDown: boolean}>`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 400; 
+  border: ${({openDropDown}) => openDropDown? '1px solid red' : 'none'};
+`;
+
+export const DropBUserName = styled.b<{openDropDown: boolean}>`
+  font-size: ${({openDropDown}) => openDropDown? '16px' : '0'};
+  color: ${({openDropDown}) => openDropDown? 'black' : '#fff'};
+  transition: ${({openDropDown}) => openDropDown? '3s' : '1.5'};
+  margin-left: 10px;
+
 `;
 
 export const DropDowButtonContainer = styled.div`

@@ -15,8 +15,8 @@ export const MenuPesquisaContainer = styled.div<{openMenu:boolean}>`
   
 
 
-  @media(max-width: 1600px) {
-    margin-left: ${({openMenu}) => openMenu? '-10px' : '60px'};
+  @media(max-width: 1650px) {
+    margin-left: ${({openMenu}) => openMenu? '-50px' : '10px'};
   
   }
 

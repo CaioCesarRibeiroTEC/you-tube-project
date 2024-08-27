@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 
 export const MenuContainer = styled.div<{openMenu: boolean }>`
-    width: ${( {openMenu} ) => openMenu? '180px' : '80px'};
-    height: calc(100vh - 55px);
+    width: ${( {openMenu} ) => openMenu? '200px' : '80px'};
+    height: ${( {openMenu} ) => openMenu? 'calc(100vh - 55px)' : '555px'};
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,12 +15,20 @@ export const MenuContainer = styled.div<{openMenu: boolean }>`
     overflow-x: hidden;
     position: sticky;
     top: 50px;   
+    
 
-    @media(max-width: 500px) {
-        width: ${( {openMenu} ) => openMenu? '180px' : '70px'};
+    @media(max-width: 750px) {
+        width: ${( {openMenu} ) => openMenu? '250px' : '70px'};
+        margin-left: ${({openMenu}) => openMenu? '0px' : '-10px'};
+        background-color: #f2f2f2;
+        border-radius: 40px;
+    }
+
+    @media(max-width: 450px) {
+        width: ${( {openMenu} ) => openMenu? '280px' : '70px'};
         margin-left: ${({openMenu}) => openMenu? '0px' : '-10px'};
         z-index: 4;
-        background-color: #fff;
+        background-color: #f2f2f2;
     }
 `;
 
@@ -28,10 +36,6 @@ export const DivisorItem = styled.div`
   width: 100%;
   margin-top: 15px;
   border-bottom: 1px solid #e0e0e0;
-
-  @media(max-width: 500px) {
-       
-    }
 
 `;
 
@@ -44,6 +48,8 @@ export const MenuItem = styled.div<{openMenu: boolean }>`
     margin-bottom: ${( {openMenu} ) => openMenu? '10px' : '20px'};
     cursor: pointer;
     padding: 2px 15px;
+
+
     :hover {
         background-color: #f2f2f2;
         border-radius: 10px;

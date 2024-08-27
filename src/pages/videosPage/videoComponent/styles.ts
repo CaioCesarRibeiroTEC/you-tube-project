@@ -4,18 +4,25 @@ import styled from "styled-components";
 export const VideosContainer = styled.div`
   width: 100%;
   height: 100%;
-  
+  margin-top: 60px;
     
 `;
 
 export const VideosContent = styled.div<{openMenu: boolean }>`
-  width: 85%;
+  width: 90%;
   height: 300px;
-  padding:${({openMenu}) => openMenu? '20px 20px 10px 50px' : '20px 0 0 60px'} ;
+  padding:${({openMenu}) => openMenu? '20px 20px 10px 10px' : '20px 0 0 10px'} ;
 
   @media(max-width: 1600px) {
     margin-left: -20px;
+    height: 250px;
   }
+
+  @media(max-width: 830px) {
+    width: 80%;
+    height: 200px;
+  }
+  
     
 `;
 
@@ -27,9 +34,14 @@ export const ImageBanner = styled.img<{openMenu: boolean }>`
   background-position: 50% 50%;
   cursor: pointer;
 
-  @media(max-width: 1600px) {
-    width: ${({openMenu}) => openMenu? '350px' : '300px'};
+  @media(max-width: 1650px) {
+    width: 95%;
     margin-left: -10px;
+  }
+
+  @media(max-width: 950px) {
+    width: 95%;
+    height: 150px;
   }
 
   @media(max-width: 830px) {
@@ -37,17 +49,32 @@ export const ImageBanner = styled.img<{openMenu: boolean }>`
     margin-left: ${({openMenu}) => openMenu? '10px' : '-10px'};
   }
 
-  @media(max-width: 500px) {
-    width: 300px;
+  @media(max-width: 750px) {
+    width: ${({openMenu}) => openMenu? '350px' : '230px'};
     margin-left: -20px;
+  }
+
+  @media(max-width: 550px) {
+    width: ${({openMenu}) => openMenu? '300px' : '200px'};
+    margin-left: -20px;
+  }
+
+  @media(max-width: 500px) {
+    margin-left: 60px;
+    width: 250px;
   }
 
 `;
 
 export const TitleContainer = styled.div<{openMenu: boolean }>`
-    width: ${({openMenu}) => openMenu? '70%' : '90%'};
+    width: 100%;
     display: flex;
     height: 200px;
+
+    @media(max-width: 500px) {
+    margin-left: 60px;
+
+  }
 `;
 
 export const ChannelImage = styled.div`

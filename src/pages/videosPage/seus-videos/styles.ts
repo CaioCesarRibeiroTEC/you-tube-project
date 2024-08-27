@@ -1,18 +1,19 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
+interface ContainerProps {
+  openMenu?: boolean;
+  hideModal?: boolean
+}
 
-export const MyVideosContainer = styled.div`
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    background-color: aliceblue;
-`;
+interface ValidInput {
+  valid: boolean
+}
 
-export const MyVideosContent = styled.div<{openMenu: boolean}>`
+export const Container = styled.div<ContainerProps>`
   width: 100%;
   max-width: 1600px;
   display: flex;
-  flex-direction:column;
+  flex-wrap: wrap;
   column-gap: 25px;
   row-gap: 20px;
   padding: ${({openMenu}) => openMenu? '70px 50px 0 330px' : '70px 10px 0 100px'};
@@ -28,8 +29,11 @@ export const MyVideosContent = styled.div<{openMenu: boolean}>`
     justify-content: center;
   }
 `;
+export const YourVideosContainer = styled.div`
+  width: 100%;
+`;
 
-export const VideoContainer = styled.div`
+export const UserContainer = styled.div`
   width: 100%;
   height: 100px;
   display: flex;
@@ -42,8 +46,12 @@ export const VideoContainer = styled.div`
   }
 `;
 
-export const Modal = styled.div<{modal: boolean}>`
-  visibility: ${({modal}) => modal? 'visible' : 'hidden' };
+export const UserName = styled.h1`
+  margin: 0;
+`;
+
+export const Modal = styled.div<ContainerProps>`
+  visibility: ${({hideModal}) => hideModal?  'visible' : 'hidden'};
   width: 100vw;
   height: 100vh;
   background-color: rgba(0,0,0,0.5);
@@ -117,7 +125,7 @@ export const CloseButton = styled.button`
   }
 `;
 
-export const ThumbnailURL = styled.input<{valid: boolean}>`
+export const ThumbnailURL = styled.input<ValidInput>`
   width: 100%;
   height: 50px;
   border: ${({valid}) => valid? "1px solid #d3d3d3" : "1px solid red"};
@@ -132,9 +140,8 @@ export const ThumbnailURL = styled.input<{valid: boolean}>`
     border-width: 2px;
     outline: none;
   }
-`;
-
-export const VideoTitle = styled.input<{valid: boolean}>`
+`
+export const VideoTitle = styled.input<ValidInput>`
   width: 100%;
   height: 50px;
   border: ${({valid}) => valid? "1px solid #d3d3d3" : "1px solid red"};
@@ -150,7 +157,7 @@ export const VideoTitle = styled.input<{valid: boolean}>`
     outline: none;
   }
 `
-export const VideoDescription = styled.input<{valid: boolean}>`
+export const VideoDescription = styled.input<ValidInput>`
   width: 100%;
   height: 50px;
   border: ${({valid}) => valid? "1px solid #d3d3d3" : "1px solid red"};

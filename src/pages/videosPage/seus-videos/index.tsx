@@ -1,6 +1,6 @@
 import { UserContext } from "../../../contexts/contexts";
 import MyVideosCards from "../videosCards";
-import { MyVideosContainer, MyVideosContent, VideoContainer, AddVideoButton, ClearButton, CloseButton, Modal, ModalContent, ModalTitle,  VideoDescription, VideoTitle, ThumbnailURL } from "./styles";
+import { AddVideoButton, ClearButton, CloseButton, Container, Modal, ModalContent, ModalTitle, ThumbnailURL, UserContainer, UserName, VideoDescription, VideoTitle, YourVideosContainer } from "./styles";
 import { useContext, useState, useRef } from "react";
 
 
@@ -136,15 +136,15 @@ function MyVideos() {
 
 
   return (
-    <MyVideosContainer>
-      <MyVideosContent openMenu={openMenu}>
-        <VideoContainer>
+    <YourVideosContainer>
+      <Container openMenu={openMenu}>
+        <UserContainer>
+          <UserName>{user.nome }</UserName>
           <AddVideoButton onClick={() => setModal(!modal)}>cadastrar video</AddVideoButton>
-          <Modal modal={modal}>
+          <Modal hideModal={modal}>
             <ModalContent>
               <CloseButton onClick={closeModal}>X</CloseButton>
               <ModalTitle>Enviar novo vídeo</ModalTitle>
-
               <ThumbnailURL
                 type="text"
                 placeholder="URL da thumbnail ex: https://images.server.com/120/1209131.jpg"
@@ -173,20 +173,24 @@ function MyVideos() {
               <ClearButton onClick={clearInputs}>Limpar</ClearButton>
             </ModalContent>
           </Modal>
-        </VideoContainer>
-        {
+        </UserContainer>
+        {Array.isArray(userVideos) ? (
           userVideos.map((video: Videos) =>
             <MyVideosCards
               title={video.title}
               thumbnail={video.thumbnail}
-              channelImage={user && user.name ? user.name.charAt(0).toUpperCase() : ''}
+              channelImage={user && user.nome ? user.nome.charAt(0).toUpperCase() : ''}
               details={video.description}
               publishedAt={getTimeDifference(video.publishedAt)}
               key={video.id}
             />)
-        }
-      </MyVideosContent>
-    </MyVideosContainer>
+        )
+          :
+          (
+            <h1>Esse canal não possui vídeos</h1>
+          )}
+      </Container>
+    </YourVideosContainer>
   )
 }
 

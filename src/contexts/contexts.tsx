@@ -53,7 +53,7 @@ export const UserStorage = ({children}: any) => {
         api.get('/users/get-user', {headers:{Authorization: token}}).then(({ data }) => {
             setUser(data.user);
             setLogin(true);
-            getVideos(token, data.user_id);
+            getVideos(token, data.user.id);
         }).catch((err) => {
             console.log('Usuário não autenticado', err)
             
@@ -90,29 +90,44 @@ export const UserStorage = ({children}: any) => {
             navigate('/')
         }).catch((err) => {
             console.log('Não foi possivel fazer o login', err)
+            if(email) {
+                alert('erro no email')
+            }
+            if(password) {
+                alert('erro no password')
+            }
         })
     }
+
+
 
     //videos
-    const getVideos = (token: string, user_id:string) => {
-        api.get(`/videos/get-videos?user_id=${user_id}`,{headers:{Authorization: token}}).then(({ data }) => {
-            setUserVideos(data.videos)
-        }).catch((err) => {
-            console.log('erro ao buscar videos', err)
-            alert('erro ao buscar videos')
-        })
-    }
-
+    
+    const getVideos = async (token: string, user_id: string) => {
+        try {
+          const response = await api.get(`/videos/get-videos?user_id=${user_id}`, { headers: { authorization: token } });
+          if (response.status === 200) {
+            console.log("resposta")
+            setUserVideos(response.data.videos);
+            console.log(response.data.videos);
+          }
+        } catch (error) {
+          console.log('erro ao buscar vídeos', error);
+        }
+      };
+    
     const createVideos = (token: string, user_id: string, title: string, description: string, thumbnail: string, publishedAt: Date) => {
         api.post('/videos/create-videos', { user_id, title, description, thumbnail, publishedAt}, {headers:{Authorization: token}}).then((  ) => {
             alert('video criado com sucesso')
-            getUser(token)
             getVideos(token, user_id)
-        }).catch((err) => {
-            console.log('erro ao criar video', err)
-            alert('erro ao criar video')
-        })
-    }    
+             getUser(token);
+         }).catch((err) => {
+             console.log('erro ao criar video', err)
+             alert('erro ao criar video')
+         })
+     } 
+
+    
     
 
     return(

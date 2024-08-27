@@ -48,7 +48,7 @@ const bloco2 = [
 const blocoLogado = [
     {name: 'Seu canal', imagem: seuCanal, link: '/seuCanal'}, 
     {name: 'Histórico',imagem: Historico, link: '/Historico'},
-    {name: 'Seus vídeos',imagem: seusVídeos, link: '/seusVideos'},
+    {name: 'Seus vídeos',imagem: seusVídeos, link: '/myVideos'},
     {name: 'Seus downloads',imagem: seusDownloads, link: '/seusDownloads'}
 
 
